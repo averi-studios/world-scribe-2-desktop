@@ -1,0 +1,10 @@
+.sidePanel{
+    flex-shrink: 0;
+    width: 300px;
+    position:sticky;
+    overflow-y:hidden;
+    display:block;
+    float: right;
+    background-color: white;
+    height: calc(100vh - 70px);
+}

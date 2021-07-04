@@ -1,0 +1,99 @@
+{
+  "name": "world-scribe-2-desktop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/averi-studios/world-scribe-2-desktop.git"
+  },
+  "description": "Desktop app for World Scribe 2: A productvity tool to help worldbuilders with organizing their fictional worlds",
+  "version": "0.9.19",
+  "author": {
+    "name": "Averi Studios Inc.",
+    "email": "support@averistudios.com",
+    "url": "https://www.averistudios.com"
+  },
+  "engines": {
+    "node": ">=14.14.0 <=14.14.0"
+  },
+  "main": "public/electron.js",
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "axios": "^0.18.1",
+    "concurrently": "^6.0.0",
+    "cross-env": "^7.0.3",
+    "electron-is-dev": "^2.0.0",
+    "electron-log": "^4.3.5",
+    "electron-store": "^8.0.0",
+    "electron-updater": "^4.3.9",
+    "history": "^4.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "typescript": "^3.3.3333",
+    "wait-on": "^5.3.0",
+    "world-scribe-2-server": "git+ssh://git@github.com:averi-studios/world-scribe-2-server.git"
+  },
+  "build": {
+    "appId": "com.averi.worldscribe",
+    "productName": "World Scribe 2",
+    "nodeVersion": "14.14.0",
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.png"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "public/icon.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility",
+      "icon": "public/icon.png",
+      "publish": {
+        "provider": "github",
+        "owner": "averi-studios",
+        "private": true
+      }
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "averi-studios",
+      "private": true
+    }
+  },
+  "homepage": "./",
+  "scripts": {
+    "postinstall": "npm run rebuild",
+    "react-start": "cross-env PORT=49001 react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "electron-build-current-platform": "electron-builder --publish onTagOrDraft",
+    "electron-build-linux": "electron-builder -l --publish onTagOrDraft",
+    "electron-build-mac": "electron-builder -m --publish onTagOrDraft",
+    "electron-build-windows": "electron-builder -w --publish onTagOrDraft",
+    "build": "npm run react-build && npm run electron-build-current-platform",
+    "build-linux": "npm run react-build && npm run electron-build-linux",
+    "build-mac": "npm run react-build && npm run electron-build-mac",
+    "build-windows": "npm run react-build && npm run electron-build-windows",
+    "release": "electron-builder",
+    "rebuild": "electron-rebuild -f -w sqlite3",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on -v http-get://localhost:49001 && electron .\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5",
+    "electron-rebuild": "^2.3.5"
+  }
+}
