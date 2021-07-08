@@ -34,3 +34,7 @@ If applicable, please add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
+
+**Logs**
+In most cases, you should upload and attach the app's log file, as it may contain useful info for troubleshooting. You can find it by clicking on the app version number at the top-left of the app, then selecting "Open Log File" in the dropdown menu.
+Alternatively, you can copy and paste text from the log file that appears to be relevant to the bug.
