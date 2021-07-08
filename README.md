@@ -1,6 +1,7 @@
 # World Scribe 2 - Desktop
 
 ## [Installation Guide for all operating systems](docs/installation.md)
+## [Frequently Asked Questions](faq.md)
 
 ## Documentation
 
