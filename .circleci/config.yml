@@ -5,7 +5,8 @@ jobs:
       - image: electronuserland/builder:wine
     steps:
       - checkout
-      - run: npm install & npm run build-windows
+      - run: npm install
+      - run: npm run build-windows
 
   build_macos:
     macos:
@@ -17,14 +18,16 @@ jobs:
       - run: security unlock-keychain -p $KEYCHAIN_PASSWORD build.keychain
       - run: echo $KEYSTORE | base64 --decode - > keystore.p12
       - run: security import keystore.p12 -k build.keychain -P $KEYCHAIN_PASSWORD -T /usr/bin/codesign
-      - run: npm install & npm run build-mac
+      - run: npm install
+      - run: npm run build-mac
 
   build_linux:
     docker:
       - image: electronuserland/builder:wine
     steps:
       - checkout
-      - run: npm install & npm run build-linux
+      - run: npm install
+      - run: npm run build-linux
 
 workflows:
   version: 1
