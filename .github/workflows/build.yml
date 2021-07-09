@@ -1,10 +1,12 @@
 name: Build/release
 
-on: push
+on:
+    push:
+        branches:
+            - master
 
 jobs:
   release:
-    if: github.ref == 'refs/heads/master'
 
     runs-on: ${{ matrix.os }}
 
