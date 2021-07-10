@@ -21,7 +21,7 @@
       1. Download the **.AppImage** file
       2. In a terminal, `cd` to the folder containing the .AppImage file
       3. Grant execute permissions on the .AppImage file by running: `chmod +x <name of .AppImage file>`
-      4. Start the app by running: `. ./<name of .AppImage file>`
+      4. Start the app by running: `./<name of .AppImage file>`
 
 
 
