@@ -53,14 +53,12 @@
       "icon": "public/icon.png",
       "publish": {
         "provider": "github",
-        "owner": "averi-studios",
-        "private": true
+        "owner": "averi-studios"
       }
     },
     "publish": {
       "provider": "github",
-      "owner": "averi-studios",
-      "private": true
+      "owner": "averi-studios"
     }
   },
   "homepage": "./",
