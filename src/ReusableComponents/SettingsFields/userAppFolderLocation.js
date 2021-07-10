@@ -79,8 +79,9 @@ class UserAppFolderLocation extends React.Component {
                     className={classes.instructions}
                     variant='body1'
                 >
-                    Select the parent folder on your computer that will contain the "WorldScribe" app folder.<br />
-                    The app folder will hold all of the data you put into World Scribe, including
+                    Select a folder on your computer. Within it, a subfolder will be created named "WorldScribe".<br />
+            <b>If you want to load an existing "WorldScribe" folder, please choose its <i>parent</i> folder (not the "WorldScribe" folder itself).</b><br />
+                    The "WorldScribe" folder will hold all of the data you put into World Scribe, including
                     your Worlds' data.
                 </Typography>
                 <div
