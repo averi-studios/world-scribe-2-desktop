@@ -50,6 +50,7 @@ class WorldsListPage extends React.Component {
             createWorldDialogIsOpen: false,
             createWorldDialogErrorMessage: ' ',
             ownedWorlds: [],
+            worldsFolderExists: false,
         }
 
         this.handleOpeningCreateWorldDialog = this.handleOpeningCreateWorldDialog.bind(this);
@@ -66,6 +67,16 @@ class WorldsListPage extends React.Component {
     componentDidMount() {
         this.props.updateAppBarTitle(APP_BAR_TITLE);
         this.getWorldsPage()
+
+        ipcRenderer.once('electron-store-get-result', (event, worldsFolderPath) => {
+            ipcRenderer.once('file-path-exists-result', (event, worldsFolderExists) => {
+                this.setState({
+                    worldsFolderExists,
+                });
+            });
+            ipcRenderer.send('file-path-exists', worldsFolderPath);
+        });
+        ipcRenderer.send('electron-store-get', 'userAppFolderPath');
     };
 
     getWorldsPage(){
@@ -221,6 +232,7 @@ class WorldsListPage extends React.Component {
                     <IconButton
                         style={{
                             marginLeft: 30,
+                            visibility: this.state.worldsFolderExists ? 'visible' : 'hidden',
                         }}
                         color='primary'
                         onClick={this.handleOpenWorldsFolderClick}

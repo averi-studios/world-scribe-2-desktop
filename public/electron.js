@@ -102,6 +102,11 @@ ipcMain.on('open-file-path', (event, path) => {
     shell.openPath(path);
 });
 
+ipcMain.on('file-path-exists', (event, filePath) => {
+    const filePathExists = fs.existsSync(filePath);
+    event.sender.send('file-path-exists-result', filePathExists);
+});
+
 ipcMain.on('open-app-log-file-in-folder', (event, arg) => {
     let logFileFolderPath;
     if (os.platform() === 'win32') {
