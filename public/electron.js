@@ -3,11 +3,15 @@ const { ipcMain, dialog, shell } = require('electron');
 const isDev = require('electron-is-dev');   
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
+const os = require('os');
+const fs = require('fs');
 
 const ElectronStore = require('electron-store');
 const electronStore = new ElectronStore();
 
 const enableAutoUpdate = electronStore.get('enableAutoUpdate');
+
+const packageJson = require('../package.json');
 
 // Start the backend API server.
 const electronLog = require('electron-log');
@@ -96,6 +100,32 @@ ipcMain.on('select-folder', (event, arg) => {
 
 ipcMain.on('open-file-path', (event, path) => {
     shell.openPath(path);
+});
+
+ipcMain.on('open-app-log-file-in-folder', (event, arg) => {
+    let logFileFolderPath;
+    if (os.platform() === 'win32') {
+        logFileFolderPath = `${process.env.USERPROFILE}\\AppData\\Roaming\\${packageJson.name}\\logs\\main.log`;
+    }
+    else if (os.platform() === 'darwin') {
+        logFileFolderPath = `${process.env.HOME}/Library/Logs/${packageJson.name}/main.log`;
+    }
+    else {
+        logFileFolderPath = `${process.env.HOME}/.config/${packageJson.name}/logs/main.log`;
+    }
+
+    if (fs.existsSync(logFileFolderPath)) {
+        shell.showItemInFolder(logFileFolderPath);
+        event.sender.send('open-app-log-file-in-folder-result', {
+            succeeded: true,
+        });
+    }
+    else {
+        event.sender.send('open-app-log-file-in-folder-result', {
+            succeeded: false,
+            message: 'Log file does not exist. It might not have been created yet. Keep using the app and then try again later.',
+        });
+    }
 });
 
 ipcMain.on('quit-app', (event, arg) => {
