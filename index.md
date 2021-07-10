@@ -1,37 +1,37 @@
-## Welcome to GitHub Pages
+# World Scribe 2
 
-You can use the [editor on GitHub](https://github.com/averi-studios/world-scribe-2-desktop/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Build new worlds, one idea at a time.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+![World Scribe 2 Logo](./images/logo.png)
 
-### Markdown
+### [Install Now! Available on desktop Windows, Mac, and Linux](https://github.com/averi-studios/world-scribe-2-desktop/blob/master/docs/installation.md)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Features
 
-```markdown
-Syntax highlighted code block
+![Article - Fields Page](./screenshots/1_article_fields_page.png)
 
-# Header 1
-## Header 2
-### Header 3
+Create an **Article** for each singular entity within the realm of your creation. Articles are the building block of a world and act as an extensive encyclopedia page detailing everything you can think of about a person, place, monster, or what-have-you!
 
-- Bulleted
-- List
+***
 
-1. Numbered
-2. List
+![Category - Fields Page](./screenshots/2_category_fields_page.png)
 
-**Bold** and _Italic_ and `Code` text
+Organize your Articles into **Categories**. Articles in a Category all share the same set of information **Fields**. You can create more Categories and edit the Fields they possess at any time.
 
-[Link](url) and ![Image](src)
-```
+***
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+![Article - Connections Page](./screenshots/3_article_connections_page.png)
 
-### Jekyll Themes
+Map out relationships between your Articles using **Connections**. In a Connection between two Articles, you can describe each Article's role in relaton to each other, as well as include a long-form description describing the nature and history of the relationship.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/averi-studios/world-scribe-2-desktop/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+***
 
-### Support or Contact
+![Snippet Page](./screenshots/4_snippet_page.png)
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Need to add unique information to an Article that doesn't fit into any of its Fields? **Snippets** have you covered! Use them to write long-form text pertaining to an Article, like a speech, a diary page, a song — the possibilities are endless! 
+
+### For Developers
+
+World Scribe 2 is an open-source project licensed under the GPLv3.
+
+To contribute, please [check out the source code repository](https://github.com/averi-studios/world-scribe-2-desktop).
