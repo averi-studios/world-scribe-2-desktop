@@ -72,3 +72,10 @@ Below are the commands for building installers for each operating system. If you
 - `npm run build-mac`
 - `npm run build-linux`
 
+
+
+## Documentation for Dependencies
+
+* Currently, the React code uses [React class components](https://reactjs.org/docs/react-component.html) (no functional components, hooks, etc.)
+* [Material-UI v3](https://v3.material-ui.com/)
+
