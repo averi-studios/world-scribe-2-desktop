@@ -66,10 +66,9 @@ To unlink your local server copy and go back to using the remote copy installed 
 
 We use [electron-builder](https://www.electron.build/) to generate executable installers for Windows, Mac, and Linux.
 
-To build an installer **for your current operating system**, run: `npm run build`
+Below are the commands for building installers for each operating system. If your machine is a Mac, you can build for Windows and Linux as well. (Windows and Linux machines can only target their own operating systems, unfortunately.)
 
-If your machine is a Mac, you can build for Windows and Linux as well. (Windows and Linux machines can only target their own operating systems, unfortunately.) Here are the commands for building for specific platforms:
+- `npm run build-windows`
+- `npm run build-mac`
+- `npm run build-linux`
 
-- npm run build-windows
-- npm run build-mac
-- npm run build-linux
