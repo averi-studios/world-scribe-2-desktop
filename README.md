@@ -3,6 +3,8 @@
 ## [Installation Guide for all operating systems](docs/installation.md)
 ## [Frequently Asked Questions](faq.md)
 
+## [Privacy Policy, and other terms and conditions](./terms.md)
+
 ## Documentation
 
 - [Developer Guide (contains build instructions and tips)](docs/developer_guide.md)
