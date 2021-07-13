@@ -1,13 +1,10 @@
-<div align="center">
+<h1 align="center">World Scribe 2</h1>
 
-# World Scribe 2
+<h2 align="center">Build new worlds, one idea at a time.</h2>
 
-## Build new worlds, one idea at a time.
+<img src="./images/logo.png" align="center" />
 
-![World Scribe 2 Logo](./images/logo.png)
-
-### [**> Install Now! Available on desktop Windows, Mac, and Linux <**](https://github.com/averi-studios/world-scribe-2-desktop/blob/master/docs/installation.md)
-</div>
+<h3 align="center"><a href="https://github.com/averi-studios/world-scribe-2-desktop/blob/master/docs/installation.md">> Install Now! Available on desktop Windows, Mac, and Linux <</a></h3>
 
 ### Features
 
