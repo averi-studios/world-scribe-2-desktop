@@ -1,3 +1,5 @@
+<div align="center">
+
 # World Scribe 2
 
 ## Build new worlds, one idea at a time.
@@ -5,6 +7,7 @@
 ![World Scribe 2 Logo](./images/logo.png)
 
 ### [**> Install Now! Available on desktop Windows, Mac, and Linux <**](https://github.com/averi-studios/world-scribe-2-desktop/blob/master/docs/installation.md)
+</div>
 
 ### Features
 
