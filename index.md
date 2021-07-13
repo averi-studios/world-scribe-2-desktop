@@ -28,12 +28,20 @@ Map out relationships between your Articles using **Connections**. In a Connecti
 
 ![Snippet Page](./screenshots/4_snippet_page.png)
 
-Need to add unique information to an Article that doesn't fit into any of its Fields? **Snippets** have you covered! Use them to write long-form text pertaining to an Article, like a speech, a diary page, a song — the possibilities are endless! 
+Need to add unique information to an Article that doesn't fit into any of its Fields? **Snippets** have you covered! Use them to write long-form text pertaining to an Article, like a speech, a diary page, a song — the possibilities are endless!
+
+***
 
 ### For Developers
 
 World Scribe 2 is an open-source project licensed under the GPLv3.
 
 To contribute, please [check out the source code repository](https://github.com/averi-studios/world-scribe-2-desktop).
+
+***
+
+### [Frequently Asked Questions (importing from Android, etc.)](https://github.com/averi-studios/world-scribe-2-desktop/blob/master/faq.md)
+
+***
 
 ### [Privacy Policy](https://github.com/averi-studios/world-scribe-2-desktop/blob/master/terms.md)
