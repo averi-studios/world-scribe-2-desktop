@@ -2,7 +2,7 @@
 
 <h2 align="center">Build new worlds, one idea at a time.</h2>
 
-<img src="./images/logo.png" align="center" />
+<p align="center"><img src="./images/logo.png" /></p>
 
 <h3 align="center"><a href="https://github.com/averi-studios/world-scribe-2-desktop/blob/master/docs/installation.md">> Install Now! Available on desktop Windows, Mac, and Linux <</a></h3>
 
