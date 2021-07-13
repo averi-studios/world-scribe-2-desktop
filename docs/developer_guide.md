@@ -7,7 +7,7 @@ The app's infrastructure is split up into 2 repos:
 - This repo, which handles a React server and serving up its UI content through an Electron desktop interface
 - The [world-scribe-2-server](https://github.com/averi-studios/world-scribe-2-server) repo, which handles an Express server that is responsible for loading and modifying persistent user data (e.g. World data)
 
-This repo loads the server repo as a dependency. They communicate with each other over HTTP calls.
+This repo loads the server repo as a dependency. When the app is running, both the React server and the Express server run _locally_ on the user's localhost ports. The servers communicate with each other over HTTP calls.
 
 Below, you can find a high-level diagram illustrating the full architecture.
 
