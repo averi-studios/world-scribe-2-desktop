@@ -35,3 +35,5 @@ Need to add unique information to an Article that doesn't fit into any of its Fi
 World Scribe 2 is an open-source project licensed under the GPLv3.
 
 To contribute, please [check out the source code repository](https://github.com/averi-studios/world-scribe-2-desktop).
+
+### [Privacy Policy](https://github.com/averi-studios/world-scribe-2-desktop/blob/master/terms.md)
