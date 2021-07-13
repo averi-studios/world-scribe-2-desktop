@@ -4,7 +4,7 @@
 
 <h2 align="center"><img src="./images/logo.png" /></h2>
 
-<h3 align="center"><a href="https://github.com/averi-studios/world-scribe-2-desktop/blob/master/docs/installation.md">> Install Now! Available on desktop Windows, Mac, and Linux <</a></h3>
+<h3 align="center"><a href="https://github.com/averi-studios/world-scribe-2-desktop/blob/master/docs/installation.md"><b>> Install Now! Available on desktop Windows, Mac, and Linux <</b></a></h3>
 
 ### Features
 
