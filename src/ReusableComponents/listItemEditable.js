@@ -15,6 +15,11 @@ const styles = (theme) => ({
         flexDirection: 'row',
         alignItems: 'center',
     },
+    listItem: {
+        display: 'flex',
+        paddingTop: '3%',
+        paddingBottom: '3%'
+    }
 });
 
 function ListItemEditActions(props) {
@@ -44,7 +49,7 @@ function ListItemEditableText(props) {
             />
         </form>
     ) : (
-        <ListItemText primary={props.name} onClick={props.onClick} />
+        <ListItemText className={props.className} primary={props.name} onClick={props.onClick} />
     );
 }
 
@@ -70,6 +75,7 @@ function ListItemEditable(props) {
                 placeholder={props.name}
                 value={newTitle}
                 onClick={props.onClick}
+                className={classes.listItem}
             />
             <ListItemSecondaryAction className={classes.actions}>
                 <ListItemEditActions
