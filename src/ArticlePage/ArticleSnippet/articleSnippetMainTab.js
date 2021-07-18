@@ -85,7 +85,7 @@ class ArticleSnippetMainTab extends React.Component{
             this.setState({
                 pageNumber: this.state.pageNumber-1
             }, ()=>{
-                this.getPage();                
+                this.getPage();
             });
         }
     }
@@ -128,7 +128,7 @@ class ArticleSnippetMainTab extends React.Component{
         let changedText = e.target.value;
         this.setState({createSnippetInputValue: changedText});
     }
-    
+
     deleteSnippet(snippetId){
         axios.delete(`/api/articles/${this.articleId}/snippets/${snippetId}`,{withCredentials:true})
         .then((resonse) => {
@@ -166,7 +166,7 @@ class ArticleSnippetMainTab extends React.Component{
         );
         return(
             <div>
-                <Pages 
+                <Pages
                 pageNumber ={this.state.pageNumber}
                 hasMorePages = {this.state.hasMorePages}
                 incrementPage = {this.incrementPage}

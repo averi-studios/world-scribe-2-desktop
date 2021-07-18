@@ -17,7 +17,7 @@ class SnippetEditor extends React.Component {
 
         this.articleId = props.match.params.articleId;
         this.snippetId = props.match.params.snippetId;
-        this.state ={ 
+        this.state ={
             content:'',
     }
         this.changeValue = this.changeValue.bind(this);
@@ -39,7 +39,7 @@ class SnippetEditor extends React.Component {
         const sendValue = {content: content};
         axios.patch(`/api/articles/${this.articleId}/snippets/${this.snippetId}/content/`,sendValue,{ withCredentials: true });
     }
-    
+
     render(){
         const { classes } = this.props;
         return(
