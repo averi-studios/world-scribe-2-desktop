@@ -21,6 +21,8 @@
     "axios": "^0.18.1",
     "concurrently": "^6.0.0",
     "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "electron-builder-notarize": "^1.2.0",
     "electron-is-dev": "^2.0.0",
     "electron-log": "^4.3.5",
     "electron-store": "^8.0.0",
@@ -45,7 +47,10 @@
     },
     "mac": {
       "category": "public.app-category.productivity",
-      "icon": "public/icon.png"
+      "icon": "public/icon.png",
+      "hardenedRuntime": true,
+      "entitlements": "public/entitlements.mac.plist",
+      "entitlementsInherit": "public/entitlements.mac.plist"
     },
     "linux": {
       "target": "AppImage",
@@ -56,6 +61,7 @@
         "owner": "averi-studios"
       }
     },
+    "afterSign": "electron-builder-notarize",
     "publish": {
       "provider": "github",
       "owner": "averi-studios"
