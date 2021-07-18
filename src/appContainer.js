@@ -14,7 +14,7 @@ import SnippetEditor from './ArticlePage/ArticleSnippet/snippetEditor';
 import ConnectionPageEditor from './ArticlePage/ArticleConnection/connectionPageEditor';
 import CategoryList from './CategoryListPage/categoryList';
 import blueGrey from '@material-ui/core/colors/blueGrey';
-import * as apiHelper from './helpers/apiHelper';
+import { apiHelper } from './helpers/apiHelper';
 
 const drawerWidth = 300;
 

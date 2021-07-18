@@ -26,7 +26,7 @@ function ListItemEditActions(props) {
     ) : (
         <>
             <EditButton onEdit={props.onEdit} />
-            <DeleteButton onDelete={props.onDelete} />
+            {props.onDelete && <DeleteButton onDelete={props.onDelete} />}
         </>
     );
 }

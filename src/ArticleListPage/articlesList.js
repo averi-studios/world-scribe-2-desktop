@@ -8,7 +8,7 @@ import NonExpandingList from '../ReusableComponents/nonExpandingList';
 import CreateArticleDialog from '../ReusableComponents/createArticleDialog';
 import ArticleListItem from './articleListItem';
 import Pages from '../ReusableComponents/pages';
-import * as apiHelper from '../helpers/apiHelper';
+import { apiHelper } from '../helpers/apiHelper';
 
 const axios = require('axios');
 
@@ -149,7 +149,7 @@ class ArticlesList extends React.Component {
         const newArticles = [...this.state.articles];
         const article = newArticles[articleIndex];
         try {
-            const response = await apiHelper.rename(newTitle, `articles/${article.id}`);
+            const response = await apiHelper.renameArticle(newTitle, article.id);
             article.name = response.data.name;
             this.setState({articles: newArticles});
         } catch(error) {
