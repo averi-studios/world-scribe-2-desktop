@@ -32,7 +32,7 @@ const styles = theme => ({
 const { ipcRenderer } = window.require('electron');
 const axios = require('axios');
 
-const anArticleOrSnippet = /articles\/\d+(\/snippets\/\d+)?/;
+const toMatch = /articles\/\d+(\/snippets\/\d+)?|categories\/\d+/;
 
 class AppContainer extends React.Component {
     constructor() {
@@ -127,7 +127,7 @@ class AppContainer extends React.Component {
     };
 
     render(){
-        const match = this.props.location.pathname.match(anArticleOrSnippet);
+        const match = this.props.location.pathname.match(toMatch);
         const { classes } = this.props;
         if (this.state.appSetupIsComplete === undefined) {
             // TODO: Display loading message.
