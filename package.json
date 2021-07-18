@@ -53,9 +53,6 @@
       "entitlements": "build/entitlements.mac.plist",
       "entitlementsInherit": "build/entitlements.mac.inherit.plist"
     },
-    "dmg": {
-      "sign": false
-    },
     "linux": {
       "target": "AppImage",
       "category": "Utility",
