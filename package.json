@@ -50,8 +50,7 @@
       "icon": "public/icon.png",
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
-      "entitlements": "build/entitlements.mac.plist",
-      "entitlementsInherit": "build/entitlements.mac.inherit.plist"
+      "entitlements": "public/entitlements.mac.plist"
     },
     "linux": {
       "target": "AppImage",
