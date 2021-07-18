@@ -40,6 +40,7 @@ function ListItemEditableText(props) {
                 placeholder={props.placeholder}
                 value={props.value}
                 onChange={props.onChange}
+                onBlur={props.onBlur}
             />
         </form>
     ) : (
@@ -65,6 +66,7 @@ function ListItemEditable(props) {
                 name={props.name}
                 onChange={(e) => setNewTitle(e.target.value)}
                 onDone={onDone}
+                onBlur={() => setIsEditable(false)}
                 placeholder={props.name}
                 value={newTitle}
                 onClick={props.onClick}
