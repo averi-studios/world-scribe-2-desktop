@@ -14,6 +14,8 @@ import SnippetEditor from './ArticlePage/ArticleSnippet/snippetEditor';
 import ConnectionPageEditor from './ArticlePage/ArticleConnection/connectionPageEditor';
 import CategoryList from './CategoryListPage/categoryList';
 import blueGrey from '@material-ui/core/colors/blueGrey';
+import * as apiHelper from './helpers/apiHelper';
+
 const drawerWidth = 300;
 
 const styles = theme => ({
@@ -111,20 +113,15 @@ class AppContainer extends React.Component {
         this.setState({ open: false });
     };
 
-    changeTitle = (newName, toChange) => {
-        axios({
-            method: 'PATCH',
-            url: `/api/${toChange}/rename/`,
-            data: {
-                name: newName
-            },
-            withCredentials: true
-        }).then((response) => {
-            this.updateAppBarTitle(response.data.name);
-        }).catch(error => {
-            // TODO: Display error message
-        });
-    };
+	changeTitle = (newName, toChange) => {
+		apiHelper.rename(newName, toChange)
+			.then((response) => {
+				this.updateAppBarTitle(response.data.name);
+			})
+			.catch((error) => {
+				// TODO: Display error message
+			});
+	};
 
     render(){
         const match = this.props.location.pathname.match(toMatch);
