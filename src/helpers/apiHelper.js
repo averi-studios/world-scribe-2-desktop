@@ -11,38 +11,16 @@ const rename = (newName, toChange) => {
     });
 }
 
-
 const renameCategory = (newName, toChange) => {
-    return axios({
-        method: 'PATCH',
-        url: `/api/categories/${toChange}/rename/`,
-        data: {
-            name: newName
-        },
-        withCredentials: true
-    });
+    return rename(newName, `categories/${toChange}`);
 }
 
 const renameArticle = (newName, toChange) => {
-    return axios({
-        method: 'PATCH',
-        url: `/api/articles/${toChange}/rename/`,
-        data: {
-            name: newName
-        },
-        withCredentials: true
-    });
+    return rename(newName, `articles/${toChange}`);
 }
 
 const renameSnippet = (newName, articleId, snippetId) => {
-    return axios({
-        method: 'PATCH',
-        url: `/api/articles/${articleId}/snippets/${snippetId}/rename/`,
-        data: {
-            name: newName
-        },
-        withCredentials: true
-    });
+    return rename(newName, `articles/${articleId}/snippets/${snippetId}`);
 }
 
 export const apiHelper = { rename, renameCategory, renameArticle, renameSnippet };
