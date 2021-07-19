@@ -148,7 +148,7 @@ class CategoryList extends React.Component {
         try {
             const response = await apiHelper.renameCategory(newTitle, category.id);
             category.name = response.data.name;
-            this.setState({articles: newCategories});
+            this.setState({categories: newCategories});
         } catch(error) {
             // TODO: Display error message
         };
