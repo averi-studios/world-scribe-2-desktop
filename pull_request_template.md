@@ -4,6 +4,16 @@
 Please include a summary of your contribution.
 
 
+
+# Related PR in world-scribe-2-server
+
+If your contribution includes backend changes in the world-scribe-2-server repo, please open a PR there first, then replace the text in this section with a link to that PR.
+
+If your contribution does *NOT* include backend changes, remove this section.
+
+
+
+
 # Checklist
 
 ## General
