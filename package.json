@@ -35,7 +35,7 @@
     "react-scripts": "2.1.5",
     "typescript": "^3.3.3333",
     "wait-on": "^5.3.0",
-    "world-scribe-2-server": "averi-studios/world-scribe-2-server#v1.0.0"
+    "world-scribe-2-server": "averi-studios/world-scribe-2-server#v1.0.1"
   },
   "build": {
     "appId": "com.averi.worldscribe",

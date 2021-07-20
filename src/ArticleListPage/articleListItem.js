@@ -1,14 +1,13 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import LoadedAvatar from '../ReusableComponents/loadedAvatar';
-import { withRouter } from "react-router";
-import DeleteButton from "../ReusableComponents/deleteButton";
+import { withRouter } from 'react-router';
+import ListItemEditable from '../ReusableComponents/listItemEditable';
 
-const styles = theme => ({
+const styles = (theme) => ({
+
 });
 
 function ArticleListItem(props) {
@@ -21,19 +20,20 @@ function ArticleListItem(props) {
         history.push(`/articles/${props.article.id}/`);
     };
     return (
-        <ListItem button onClick={handleClick} >
+        <ListItem button>
             <ListItemAvatar>
                 <LoadedAvatar
                     imageUrl={imageUrl}
                     altText={props.article.name}
                 />
             </ListItemAvatar>
-            <ListItemText
-                primary={props.article.name}
+            <ListItemEditable
+                onClick={handleClick}
+                name={props.article.name}
+                placeholder={props.article.name}
+                onDelete={() => props.onDelete(props.article.id)}
+                onDone={props.onDone}
             />
-            <ListItemSecondaryAction>
-                <DeleteButton onDelete={()=>props.onDelete(props.article.id)}/>
-            </ListItemSecondaryAction>
         </ListItem>
     );
 }

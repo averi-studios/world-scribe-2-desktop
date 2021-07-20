@@ -1,12 +1,10 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import LoadedAvatar from '../ReusableComponents/loadedAvatar';
 import { withRouter } from "react-router";
-import DeleteButton from "../ReusableComponents/deleteButton";
+import ListItemEditable from '../ReusableComponents/listItemEditable';
 
 const styles = theme => ({
 });
@@ -20,27 +18,22 @@ function CategoryListItem(props) {
         props.updateAppBarTitle(props.category.name);
         history.push(`/categories/${props.category.id}/`);
     };
-    
+
     return (
-        <ListItem button onClick={handleClick} >
+        <ListItem button >
             <ListItemAvatar>
                 <LoadedAvatar
                     imageUrl={imageUrl}
                     altText={props.category.name}
                 />
             </ListItemAvatar>
-            <ListItemText
-                primary={props.category.name}
+            <ListItemEditable
+                onClick={handleClick}
+                name={props.category.name}
+                placeholder={props.category.name}
+                onDelete={() => props.onDelete(props.category.id)}
+                onDone={props.onDone}
             />
-            {
-                props.onDelete
-                ? (
-                    <ListItemSecondaryAction>
-                        <DeleteButton onDelete={()=>props.onDelete(props.category.id)}/>
-                    </ListItemSecondaryAction>
-                )
-                : null
-            }
         </ListItem>
     );
 }

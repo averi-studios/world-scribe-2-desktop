@@ -78,7 +78,7 @@ class CategoryPage extends React.Component {
             });
         }
     }
-    
+
     handleTabChange(event, tabIndex) {
         this.setState({
             tabIndex: tabIndex
@@ -94,7 +94,6 @@ class CategoryPage extends React.Component {
     render() {
         const { classes } = this.props;
         const { tabIndex } = this.state;
-
         return (
             <div>
                 <CategorySidePanel
