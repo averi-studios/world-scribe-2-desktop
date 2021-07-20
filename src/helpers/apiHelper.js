@@ -3,7 +3,7 @@ import axios from "axios";
 const rename = (newName, toChange) => {
     return axios({
         method: 'PATCH',
-        url: `/api/${toChange}/rename/`,
+        url: `/api/${toChange}/name/`,
         data: {
             name: newName
         },
