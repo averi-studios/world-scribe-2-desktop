@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import IconButton from '@material-ui/core/IconButton';
 import classNames from 'classnames';
+import EditableTitle from './editableTitle';
 
 const styles = {
     root: {
@@ -42,36 +42,38 @@ const styles = {
 
 class ButtonAppBar extends React.Component {
     render(){
-    const { classes,open,history } = this.props;
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton
-                        aria-label="Open drawer"
-                        onClick={this.props.handleDrawerOpen}
-                        className={classNames(classes.menuButton, open)}
-                    >
-                        <MenuIcon
-                            className={classes.menuButtonIcon}
-                        />
-                    </IconButton>
-                    <div className={classes.grow}>
+        const { classes,open,history } = this.props;
+        return (
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar>
                         <IconButton
-                            aria-label="Go back one page"
-                            onClick={history.goBack}
-                            className={classes.backButton}
+                            aria-label="Open drawer"
+                            onClick={this.props.handleDrawerOpen}
+                            className={classNames(classes.menuButton, open)}
                         >
-                            <BackIcon className={classes.backButtonIcon} />
+                            <MenuIcon
+                                className={classes.menuButtonIcon}
+                            />
                         </IconButton>
-                        <Typography variant="h6" color="inherit">
-                            {this.props.title}
-                        </Typography>
-                    </div>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+                        <div className={classes.grow}>
+                            <IconButton
+                                aria-label="Go back one page"
+                                onClick={history.goBack}
+                                className={classes.backButton}
+                            >
+                                <BackIcon className={classes.backButtonIcon} />
+                            </IconButton>
+                            <EditableTitle
+                                editable={this.props.editable}
+                                title={this.props.title}
+                                onTitleChange={this.props.handleTitleChange}
+                            />
+                        </div>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
     }
 }
 

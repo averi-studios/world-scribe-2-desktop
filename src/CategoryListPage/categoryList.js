@@ -10,6 +10,8 @@ import  Modal  from '../ReusableComponents/modal';
 import NonExpandingList from '../ReusableComponents/nonExpandingList';
 import Pages from '../ReusableComponents/pages';
 
+import { apiHelper } from '../helpers/apiHelper';
+
 const axios = require('axios');
 
 const styles = theme => ({
@@ -58,7 +60,7 @@ class CategoryList extends React.Component {
 
     getPage() {
         axios.get(`/api/categories?page=${this.state.pageNumber}&size=10`, { withCredentials: true })
-        .then((response) => {   
+        .then((response) => {
             this.setState({
                 categories: response.data.categories,
                 hasMorePages:response.data.hasMore,
@@ -81,7 +83,7 @@ class CategoryList extends React.Component {
             this.setState({
                 pageNumber: this.state.pageNumber-1
             }, ()=>{
-                this.getPage();                
+                this.getPage();
             });
         }
     }
@@ -100,7 +102,7 @@ class CategoryList extends React.Component {
 
     deleteCategory(categoryId){
         axios.delete(`/api/categories/${categoryId}/`,{withCredentials:true})
-        .then((response) => {          
+        .then((response) => {
             let pageNumber = this.state.pageNumber;
             if ((this.state.categories.length === 1) && (this.state.pageNumber > 1)) {
                 pageNumber = pageNumber - 1;
@@ -122,7 +124,7 @@ class CategoryList extends React.Component {
             .then((response) => {
                 this.onSubmissionRedirect(response.data.name,response.data.id);
             })
-        }   
+        }
     }
     onSubmissionRedirect(AppBarName,categoryId){
         const { history } = this.props;
@@ -139,16 +141,30 @@ class CategoryList extends React.Component {
             this.handleCreateCategorySubmission();
         }
       }
+
+    async changeTitle(categoryIndex, newTitle) {
+        const newCategories = [...this.state.categories];
+        const category = newCategories[categoryIndex];
+        try {
+            const response = await apiHelper.renameCategory(newTitle, category.id);
+            category.name = response.data.name;
+            this.setState({categories: newCategories});
+        } catch(error) {
+            // TODO: Display error message
+        };
+    }
+
     render() {
         const { classes } = this.props;
         const onDelete = this.deleteCategory;
 
-        const listItems = this.state.categories.map((category) => {
+        const listItems = this.state.categories.map((category, index) => {
             return (
                 <CategoryListItem
                     key={category.id}
                     category={category}
                     onDelete={onDelete}
+                    onDone={async (newTitle) => await this.changeTitle(index, newTitle)}
                     updateAppBarTitle={this.props.updateAppBarTitle}
                 />
             );
@@ -157,7 +173,7 @@ class CategoryList extends React.Component {
             <div
                 className={classes.pageBackground}
             >
-                <Pages 
+                <Pages
                     pageNumber ={this.state.pageNumber}
                     hasMorePages = {this.state.hasMorePages}
                     incrementPage = {this.incrementPage}
@@ -173,7 +189,7 @@ class CategoryList extends React.Component {
                         </Fab>
                     }
                 />
-                <Modal 
+                <Modal
                 header={"Create a new category"}
                 content={<input type="text" value={this.state.newCategoryName} onKeyDown={this.handleKeyDown} onChange={this.handleModalTextChange} />}
                 open={this.state.createCategoryDialogIsOpen}

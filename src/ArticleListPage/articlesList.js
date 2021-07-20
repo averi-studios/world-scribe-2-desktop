@@ -8,6 +8,7 @@ import NonExpandingList from '../ReusableComponents/nonExpandingList';
 import CreateArticleDialog from '../ReusableComponents/createArticleDialog';
 import ArticleListItem from './articleListItem';
 import Pages from '../ReusableComponents/pages';
+import { apiHelper } from '../helpers/apiHelper';
 
 const axios = require('axios');
 
@@ -89,7 +90,7 @@ class ArticlesList extends React.Component {
             this.setState({
                 pageNumber: this.state.pageNumber-1
             }, ()=>{
-                this.getArticlePage();                
+                this.getArticlePage();
             });
         }
     }
@@ -112,7 +113,7 @@ class ArticlesList extends React.Component {
     }
     deleteArticle(articleId){
         axios.delete(`/api/articles/${articleId}/`,{withCredentials:true})
-        .then((response) => {          
+        .then((response) => {
             let pageNumber = this.state.pageNumber;
             if ((this.state.articles.length === 1) && (pageNumber > 1)) {
                 pageNumber = pageNumber - 1
@@ -143,16 +144,30 @@ class ArticlesList extends React.Component {
         this.props.updateAppBarTitle(AppBarName);
         history.push(`/articles/${ArticleId}`);
     }
+
+    async changeTitle(articleIndex, newTitle) {
+        const newArticles = [...this.state.articles];
+        const article = newArticles[articleIndex];
+        try {
+            const response = await apiHelper.renameArticle(newTitle, article.id);
+            article.name = response.data.name;
+            this.setState({articles: newArticles});
+        } catch(error) {
+            // TODO: Display error message
+        };
+    }
+
     render() {
         const { classes } = this.props;
 
-        const listItems = this.state.articles.map((article) => {
+        const listItems = this.state.articles.map((article, index) => {
             return (
                 <ArticleListItem
                     key={article.id}
                     article={article}
                     onDelete={this.deleteArticle}
-                    updateAppBarTitle={this.props.updateAppBarTitle}
+                    onDone={async (newTitle) => await this.changeTitle(index, newTitle)}
+                    updateAppBarTitle={(newTitle) => this.props.updateAppBarTitle(newTitle, index)}
                 />
             );
         });
@@ -161,7 +176,7 @@ class ArticlesList extends React.Component {
             <div
                 className={classes.pageBackground}
             >
-            <Pages 
+            <Pages
                 pageNumber ={this.state.pageNumber}
                 hasMorePages = {this.state.hasMorePages}
                 incrementPage = {this.incrementPage}
@@ -174,7 +189,7 @@ class ArticlesList extends React.Component {
                     onClick={this.handleOpeningCreateArticleDialog}
                 >
                     <AddIcon />
-                </Fab>                
+                </Fab>
                 <CreateArticleDialog
                     categories={this.state.categories}
                     errorMessage={this.state.createArticleDialogErrorMessage}

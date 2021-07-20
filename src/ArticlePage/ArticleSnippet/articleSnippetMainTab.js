@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Modal from '../../ReusableComponents/modal';
 import Pages from '../../ReusableComponents/pages';
 import { Typography } from '@material-ui/core';
+import {apiHelper} from '../../helpers/apiHelper';
 
 const axios = require('axios');
 
@@ -85,7 +86,7 @@ class ArticleSnippetMainTab extends React.Component{
             this.setState({
                 pageNumber: this.state.pageNumber-1
             }, ()=>{
-                this.getPage();                
+                this.getPage();
             });
         }
     }
@@ -128,7 +129,7 @@ class ArticleSnippetMainTab extends React.Component{
         let changedText = e.target.value;
         this.setState({createSnippetInputValue: changedText});
     }
-    
+
     deleteSnippet(snippetId){
         axios.delete(`/api/articles/${this.articleId}/snippets/${snippetId}`,{withCredentials:true})
         .then((resonse) => {
@@ -153,6 +154,19 @@ class ArticleSnippetMainTab extends React.Component{
         }
       }
 
+    async changeTitle(snippetIndex, articleId, newTitle) {
+        const newSnippets = [...this.state.snippets];
+        const snippet = newSnippets[snippetIndex];
+        console.debug(snippet);
+        try {
+            const response = await apiHelper.renameSnippet(newTitle, articleId, snippet.id);
+            snippet.name = response.data.name;
+            this.setState({snippets: newSnippets});
+        } catch(error) {
+            // TODO: Display error message
+        };
+    }
+
     render(){
         const {classes} = this.props;
         const bottomRightButton = (
@@ -166,17 +180,25 @@ class ArticleSnippetMainTab extends React.Component{
         );
         return(
             <div>
-                <Pages 
-                pageNumber ={this.state.pageNumber}
-                hasMorePages = {this.state.hasMorePages}
-                incrementPage = {this.incrementPage}
-                decrementPage = {this.decrementPage}
-                bottomRightButton ={bottomRightButton}
-                content={
-                    <Paper className={classes.snippetList}>
-                    {this.state.snippets.map((snippet) => (
-                        <ArticleSnippetListItem articleId={this.articleId} updateAppBarTitle={this.props.updateAppBarTitle} key={snippet.id} onDelete={this.deleteSnippet} snippet={snippet}/>
-                    ))}</Paper>
+                <Pages
+                    pageNumber ={this.state.pageNumber}
+                    hasMorePages = {this.state.hasMorePages}
+                    incrementPage = {this.incrementPage}
+                    decrementPage = {this.decrementPage}
+                    bottomRightButton ={bottomRightButton}
+                    content={
+                        <Paper className={classes.snippetList}>
+                            {this.state.snippets.map((snippet, snippetIndex) => (
+                                <ArticleSnippetListItem
+                                    articleId={this.articleId}
+                                    updateAppBarTitle={this.props.updateAppBarTitle}
+                                    key={snippet.id}
+                                    onDelete={this.deleteSnippet}
+                                    onDone={async (newTitle) => await this.changeTitle(snippetIndex, this.articleId, newTitle)}
+                                    snippet={snippet}
+                                />
+                            ))}
+                        </Paper>
                     }
                 />
                 <div className={classes.modalDiv}>
