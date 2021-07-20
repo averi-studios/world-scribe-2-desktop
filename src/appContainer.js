@@ -14,7 +14,10 @@ import SnippetEditor from './ArticlePage/ArticleSnippet/snippetEditor';
 import ConnectionPageEditor from './ArticlePage/ArticleConnection/connectionPageEditor';
 import CategoryList from './CategoryListPage/categoryList';
 import blueGrey from '@material-ui/core/colors/blueGrey';
+import { apiHelper } from './helpers/apiHelper';
+
 const drawerWidth = 300;
+
 const styles = theme => ({
     content: {
         marginLeft: 0,
@@ -31,7 +34,9 @@ const styles = theme => ({
 const { ipcRenderer } = window.require('electron');
 const axios = require('axios');
 
-class AppContainer extends React.Component{
+const toMatch = /articles\/\d+(\/snippets\/\d+)?|categories\/\d+/;
+
+class AppContainer extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -107,7 +112,19 @@ class AppContainer extends React.Component{
     handleDrawerClose = () => {
         this.setState({ open: false });
     };
+
+	changeTitle = (newName, toChange) => {
+		apiHelper.rename(newName, toChange)
+			.then((response) => {
+				this.updateAppBarTitle(response.data.name);
+			})
+			.catch((error) => {
+				// TODO: Display error message
+			});
+	};
+
     render(){
+        const match = this.props.location.pathname.match(toMatch);
         const { classes } = this.props;
         if (this.state.appSetupIsComplete === undefined) {
             // TODO: Display loading message.
@@ -135,7 +152,7 @@ class AppContainer extends React.Component{
                 </Route>
                 <Route>
                     <div>
-                        <AppBar title={this.state.appBarTitle} open={this.state.open} handleDrawerOpen={this.handleDrawerOpen}/>
+                        <AppBar title={this.state.appBarTitle} open={this.state.open} handleDrawerOpen={this.handleDrawerOpen} editable={match} handleTitleChange={(newName) => this.changeTitle(newName, match[0])}/>
                         <NavigationModule worldName={this.state.currentWorldName} open={this.state.open} handleDrawerClose={this.handleDrawerClose}/>
                         <main className={classNames(classes.content, {
                             [classes.contentShift]: this.state.open,
