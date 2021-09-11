@@ -6,7 +6,7 @@ The short answer is: **No, not yet.**
 
 Unfortunately, it's not as easy as copy-and-pasting World folders from your Android phone into World Scribe 2's "Worlds" folder. The Android app stores data in a completely different format, so Android World data would need to be _converted_ before it can be used in the World Scribe 2 app.
 
-This conversion feature is not currently implemented in World Scribe 2, but it is high-priority on  our roadmap, as we recognize that it's a must-have feature for those of you who are using the Android app. We (the code owners) are currently working out a plan on how to implement this feature. Once it's ready, we'll share it in the [Issues page](https://github.com/averi-studios/world-scribe-2-desktop/issues) so that the community can get a sense of what needs to be done, provide feedback, and contribute to the implementation.
+This conversion feature is not currently implemented in World Scribe 2, but it is high-priority on  our roadmap, as we recognize that it's a must-have feature for those of you who are using the Android app. We (the code owners) are currently working out a plan on how to implement this feature. If you're a developer, you can read and discuss our plan [here](https://github.com/averi-studios/world-scribe-2-desktop/issues/18).
 
 ## Q: How do I share / backup my Worlds?
 
